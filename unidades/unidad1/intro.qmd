@@ -1,1 +1,7 @@
 # Intro to Quarto
+
+Esta es una introducción a la creación de libros en Quarto.
+
+::: center
+![](images/paste-1.png)
+:::

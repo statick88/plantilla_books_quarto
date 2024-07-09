@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Django y React 2024",
+    "title": "nombre del curso",
     "section": "",
-    "text": "Bienvenido",
+    "text": "Bienvenido\n\n\n\nBienvenida al libro\n\nDescripción del Curso general ## ¿De qué trata este curso?\nEn esta sección describimos de que va a tratar el curso ## ¿Para quién es este curso?\nEn esta sección mencionamos el público objetivo ## ¿Cómo contribuir?\nEn esta sección describimos como se puede contribuir al libro",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bienvenido</span>"
     ]
@@ -2845,5 +2845,16 @@
     "title": "Licencia",
     "section": "Cambios en la Licencia",
     "text": "Cambios en la Licencia\n[Nombre de la Compañía] se reserva el derecho de modificar los términos de esta licencia en cualquier momento. Cualquier cambio se reflejará en esta página.\nGracias por respetar nuestros derechos de autor y por tu comprensión."
+  },
+  {
+    "objectID": "unidades/unidad1/intro.html",
+    "href": "unidades/unidad1/intro.html",
+    "title": "Intro to Quarto",
+    "section": "",
+    "text": "Esta es una introducción a la creación de libros en Quarto.",
+    "crumbs": [
+      "Unidad 1: Nombre de la Unidad",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Intro to Quarto</span>"
+    ]
   }
 ]
