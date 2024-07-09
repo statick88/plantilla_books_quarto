@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Curso de Django y React 2024">
+
+<title>Django y React 2024 - Nodejs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../unidades/unidad6/5_introduccion_react.html" rel="next">
+<link href="../../unidades/unidad6/3_introduccion_javascript.html" rel="prev">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_frontend.html">Unidad 6: Frontend</a></li><li class="breadcrumb-item"><a href="../../unidades/unidad6/4_introduccion_node.html"><span class="chapter-title">Nodejs</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Django y React 2024</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../curso_django_and_react_2024.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../curso_django_and_react_2024.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenido</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Unidad 1: Introducción a Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/1_git_y_github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Git y GitHub 🕹️</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/2_github_classroom.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GitHub Classroom 📒</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/3_docker.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Docker 🐋</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Unidad 2: Python Básico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad2/1_introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hola Mundo en Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad2/2_variable_y_control_de_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sintaxis Básica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Unidad 3: Python Intermedio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad3/3_listas_tuplas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad3/4_conjuntos_diccionarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Diccionarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Unidad 4: Python Avanzado</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/5_programacion_oo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programación Orientada a Objetos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/6_modulos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Módulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/project001.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sistema de Gestión de Inventarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Unidad 5: Django</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/1_django_fundamentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Django</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/2_configuracion_inicial.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Configuración inicial de un proyecto.</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/3_estructura_archivos_directorios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Estructura de archivos y carpetas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/4_modelos_vistas_plantillas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/5_drf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Django Rest Framework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/6_testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/7_correccion_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Corrección de tests en Django Rest Framework</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Unidad 6: Frontend</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/1_introduccion_frontend.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a HTML</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/2_introduccion_css.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a CSS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/3_introduccion_javascript.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">JavaScript</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/4_introduccion_node.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Nodejs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/5_introduccion_react.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a React</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/6_primeros_pasos_con_react.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Primeros pasos con React</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/7_fetch_con_react.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Método fetch con React</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/8_fetch_con_react_tiempo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fetch con React para obtener el listado de productos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/9_crud_react.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crud Básico con React y Axios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Ejercicios</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_git_github-000.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios de Git y Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-001.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-002.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-003.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-004.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#características-de-nodejs" id="toc-características-de-nodejs" class="nav-link active" data-scroll-target="#características-de-nodejs">Características de Nodejs</a></li>
+  <li><a href="#utilizando-nodejs" id="toc-utilizando-nodejs" class="nav-link" data-scroll-target="#utilizando-nodejs">Utilizando nodejs</a></li>
+  <li><a href="#lógica-de-la-programación-con-nodejs" id="toc-lógica-de-la-programación-con-nodejs" class="nav-link" data-scroll-target="#lógica-de-la-programación-con-nodejs">Lógica de la programación con nodejs</a>
+  <ul class="collapse">
+  <li><a href="#globalthis" id="toc-globalthis" class="nav-link" data-scroll-target="#globalthis">GlobalThis</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">Conclusiones</a></li>
+  <li><a href="#creación-de-una-aplicación-web-con-nodejs" id="toc-creación-de-una-aplicación-web-con-nodejs" class="nav-link" data-scroll-target="#creación-de-una-aplicación-web-con-nodejs">Creación de una aplicación web con Nodejs</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#alternativas-a-nodejs" id="toc-alternativas-a-nodejs" class="nav-link" data-scroll-target="#alternativas-a-nodejs">Alternativas a Nodejs</a></li>
+  <li><a href="#npm-yarn-y-pnpm" id="toc-npm-yarn-y-pnpm" class="nav-link" data-scroll-target="#npm-yarn-y-pnpm">Npm, Yarn y Pnpm</a>
+  <ul class="collapse">
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#npm" id="toc-npm" class="nav-link" data-scroll-target="#npm">Npm</a></li>
+  <li><a href="#instalación-de-paquetes-con-npm" id="toc-instalación-de-paquetes-con-npm" class="nav-link" data-scroll-target="#instalación-de-paquetes-con-npm">Instalación de paquetes con Npm</a></li>
+  <li><a href="#yarn" id="toc-yarn" class="nav-link" data-scroll-target="#yarn">Yarn</a></li>
+  <li><a href="#crear-un-proyecto-con-yarn" id="toc-crear-un-proyecto-con-yarn" class="nav-link" data-scroll-target="#crear-un-proyecto-con-yarn">Crear un proyecto con Yarn</a></li>
+  <li><a href="#crear-un-proyecto-con-pnpm" id="toc-crear-un-proyecto-con-pnpm" class="nav-link" data-scroll-target="#crear-un-proyecto-con-pnpm">Crear un proyecto con Pnpm</a></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">Conclusiones</a></li>
+  <li><a href="#fnm" id="toc-fnm" class="nav-link" data-scroll-target="#fnm">FNM</a></li>
+  <li><a href="#conclusiones-4" id="toc-conclusiones-4" class="nav-link" data-scroll-target="#conclusiones-4">Conclusiones</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_frontend.html">Unidad 6: Frontend</a></li><li class="breadcrumb-item"><a href="../../unidades/unidad6/4_introduccion_node.html"><span class="chapter-title">Nodejs</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Nodejs</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/node-logo.png" class="center img-fluid figure-img" width="200"></p>
+<figcaption>Nodejs</figcaption>
+</figure>
+</div>
+</div>
+<div class="justify">
+<p>Nodejs es muy importante para el desarrollo de aplicaciones web, ya que es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor. Nodejs es muy popular en el desarrollo de aplicaciones web, ya que permite crear aplicaciones web de forma rápida y sencilla.</p>
+<p>En esta sección analizaremos las características de Nodejs y cómo podemos utilizarlo para desarrollar aplicaciones web para posteriormente adentrarnos en Reactjs.</p>
+</div>
+<section id="características-de-nodejs" class="level2">
+<h2 class="anchored" data-anchor-id="características-de-nodejs">Características de Nodejs</h2>
+<div class="justify">
+<p>Nodejs es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor. Nodejs es muy popular en el desarrollo de aplicaciones web, ya que permite crear aplicaciones web de forma rápida y sencilla.</p>
+<p>Algunas de las características de Nodejs son:</p>
+<ul>
+<li><p><strong>JavaScript en el servidor</strong>: Nodejs permite ejecutar código JavaScript en el servidor, lo que facilita la creación de aplicaciones web.</p></li>
+<li><p><strong>Event-driven</strong>: Nodejs es un entorno de ejecución event-driven, lo que significa que las operaciones se realizan de forma asíncrona y no bloqueante.</p></li>
+<li><p><strong>I/O no bloqueante</strong>: Nodejs utiliza un modelo de I/O no bloqueante, lo que permite realizar operaciones de entrada/salida de forma asíncrona y no bloqueante.</p></li>
+<li><p><strong>Módulos</strong>: Nodejs permite utilizar módulos para organizar el código en diferentes archivos y reutilizarlo en diferentes partes de la aplicación.</p></li>
+<li><p><strong>NPM</strong>: Nodejs cuenta con un gestor de paquetes llamado NPM que permite instalar y gestionar paquetes de código JavaScript de forma sencilla.</p></li>
+<li><p><strong>APIs</strong>: Nodejs cuenta con un conjunto de APIs que permiten interactuar con el sistema operativo, el sistema de archivos, la red, etc.</p></li>
+<li><p><strong>Escalabilidad</strong>: Nodejs es muy escalable y permite manejar un gran número de conexiones simultáneas de forma eficiente.</p></li>
+<li><p><strong>Comunidad</strong>: Nodejs cuenta con una gran comunidad de desarrolladores que contribuyen con la creación de paquetes y herramientas para el desarrollo de aplicaciones web.</p></li>
+</ul>
+<section id="instalación-de-nodejs" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-nodejs">Instalación de Nodejs</h2>
+<p>Para instalar Nodejs en tu sistema operativo, puedes descargar el instalador desde la página oficial de Nodejs: <a href="https://nodejs.org/">https://nodejs.org/</a>.</p>
+<p>Una vez descargado el instalador, puedes seguir las instrucciones de instalación para instalar Nodejs en tu sistema operativo.</p>
+</section>
+</div>
+</section>
+<section id="utilizando-nodejs" class="level2">
+<h2 class="anchored" data-anchor-id="utilizando-nodejs">Utilizando nodejs</h2>
+<div class="justify">
+<p>Una vez instalado Nodejs en tu sistema operativo, puedes utilizar el comando <strong>node</strong> para ejecutar código JavaScript en el servidor. Por ejemplo, puedes crear un archivo <strong>hola-mundo.js</strong> con el siguiente código:</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Hola mundo!'</span>)<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">info</span>(<span class="st">'Información'</span>)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">warn</span>(<span class="st">'Advertencia'</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Error'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<p>Para ejecutar el archivo <strong>hola-mundo.js</strong>, puedes utilizar el siguiente comando:</p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> hola-mundo.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::{.justify} Al ejecutar el comando, verás el mensaje de “Hola mundo!” en la consola del sistema operativo.</p>
+</section>
+<section id="lógica-de-la-programación-con-nodejs" class="level1">
+<h1>Lógica de la programación con nodejs</h1>
+<p>Para realizar operaciones más complejas con Nodejs, puedes utilizar módulos para organizar el código en diferentes archivos y reutilizarlo en diferentes partes de la aplicación. Por ejemplo, puedes crear un módulo <strong>operaciones.js</strong> con las siguientes funciones:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sumar</span>(a<span class="op">,</span> b) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">restar</span>(a<span class="op">,</span> b) {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> a <span class="op">-</span> b<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">multiplicar</span>(a<span class="op">,</span> b) {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> a <span class="op">*</span> b<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">dividir</span>(a<span class="op">,</span> b) {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> a <span class="op">/</span> b<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  sumar<span class="op">,</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  restar<span class="op">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  multiplicar<span class="op">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  dividir</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para utilizar el módulo <strong>operaciones.js</strong> en otro archivo, puedes utilizar la función <strong>require</strong> de Nodejs. Por ejemplo, puedes crear un archivo <strong>index.js</strong> con el siguiente código:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> operaciones <span class="op">=</span> <span class="pp">require</span>(<span class="st">'./operaciones'</span>)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Suma:'</span><span class="op">,</span> operaciones<span class="op">.</span><span class="fu">sumar</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Resta:'</span><span class="op">,</span> operaciones<span class="op">.</span><span class="fu">restar</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Multiplicación:'</span><span class="op">,</span> operaciones<span class="op">.</span><span class="fu">multiplicar</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'División:'</span><span class="op">,</span> operaciones<span class="op">.</span><span class="fu">dividir</span>(<span class="dv">6</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para ejecutar el archivo <strong>index.js</strong>, puedes utilizar el siguiente comando:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> index.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Al ejecutar el comando, verás los resultados de las operaciones matemáticas en la consola del sistema operativo.</p>
+<section id="globalthis" class="level2">
+<h2 class="anchored" data-anchor-id="globalthis">GlobalThis</h2>
+<div class="justify">
+<p>Nodejs cuenta con un objeto global llamado <strong>globalThis</strong> que permite acceder a las variables y funciones globales en el entorno de ejecución de Nodejs. Por ejemplo, puedes utilizar el objeto <strong>globalThis</strong> para acceder a las variables y funciones globales en el entorno de ejecución de Nodejs.</p>
+<p>Por ejemplo, puedes utilizar el objeto <strong>globalThis</strong> para acceder a la variable <strong>process</strong> que contiene información sobre el proceso de Nodejs. Por ejemplo, puedes acceder a la versión de Nodejs con la siguiente instrucción:</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(globalThis<span class="op">.</span><span class="at">process</span><span class="op">.</span><span class="at">version</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Al ejecutar la instrucción, verás la versión de Nodejs en la consola del sistema operativo.</p>
+</section>
+<section id="conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones">Conclusiones</h2>
+<p>Nodejs es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor. Nodejs es muy popular en el desarrollo de aplicaciones web, ya que permite crear aplicaciones web de forma rápida y sencilla.</p>
+<p>En esta sección hemos analizado las características de Nodejs y cómo podemos utilizarlo para desarrollar aplicaciones web. En la siguiente sección nos adentraremos en Reactjs y veremos cómo podemos utilizarlo en el desarrollo de aplicaciones web con Nodejs.</p>
+</section>
+<section id="creación-de-una-aplicación-web-con-nodejs" class="level2">
+<h2 class="anchored" data-anchor-id="creación-de-una-aplicación-web-con-nodejs">Creación de una aplicación web con Nodejs</h2>
+<div class="justify">
+<p>Para crear una aplicación web con Nodejs, puedes seguir los siguientes pasos:</p>
+<ol type="1">
+<li>Crea un directorio para tu aplicación web:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mi-aplicacion-web</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mi-aplicacion-web</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="2" type="1">
+<li>Inicializa un proyecto de Nodejs:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> init <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="3" type="1">
+<li>Instala el paquete <strong>express</strong> para crear un servidor web:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install express</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="4" type="1">
+<li>Crea un archivo <strong>index.js</strong> con el siguiente código:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">'express'</span>)<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">'/'</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">'Hola mundo!'</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Servidor web iniciado en el puerto 3000'</span>)<span class="op">;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="5" type="1">
+<li>Inicia el servidor web:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> index.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="6" type="1">
+<li>Abre tu navegador y accede a la dirección <a href="http://localhost:3000/">http://localhost:3000/</a>.</li>
+</ol>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/app_express.png" class="center img-fluid figure-img"></p>
+<figcaption>App Express</figcaption>
+</figure>
+</div>
+</div>
+<p>Con estos pasos has creado una aplicación web con Nodejs que muestra un mensaje de “Hola mundo!” en el navegador.</p>
+</div>
+</section>
+<section id="conclusiones-1" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-1">Conclusiones</h2>
+<div class="justify">
+<p>Nodejs es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor. Nodejs es muy popular en el desarrollo de aplicaciones web, ya que permite crear aplicaciones web de forma rápida y sencilla.</p>
+<p>En esta sección hemos analizado las características de Nodejs y cómo podemos utilizarlo para desarrollar aplicaciones web. En la siguiente sección nos adentraremos en Reactjs y veremos cómo podemos utilizarlo en el desarrollo de aplicaciones web con Nodejs.</p>
+</div>
+</section>
+</section>
+<section id="alternativas-a-nodejs" class="level1">
+<h1>Alternativas a Nodejs</h1>
+<div class="justify">
+<p>En el desarrollo de aplicaciones web existen diferentes alternativas a Nodejs que permiten ejecutar código JavaScript en el servidor. En esta sección analizaremos algunas de las alternativas a Nodejs y sus características.</p>
+<section id="deno" class="level2">
+<h2 class="anchored" data-anchor-id="deno">Deno</h2>
+<p>Deno es un entorno de ejecución de JavaScript y TypeScript que permite ejecutar código JavaScript en el servidor. Deno es una alternativa a Nodejs que cuenta con algunas características interesantes como:</p>
+<ul>
+<li><p><strong>Seguridad</strong>: Deno utiliza un modelo de seguridad basado en permisos que permite controlar el acceso a los recursos del sistema.</p></li>
+<li><p><strong>TypeScript</strong>: Deno es compatible con TypeScript de forma nativa, lo que permite utilizar TypeScript en el desarrollo de aplicaciones web.</p></li>
+<li><p><strong>Módulos ESM</strong>: Deno utiliza módulos ESM (ECMAScript Modules) de forma nativa, lo que facilita la importación de módulos en el código JavaScript.</p></li>
+<li><p><strong>APIs</strong>: Deno cuenta con un conjunto de APIs que permiten interactuar con el sistema operativo, el sistema de archivos, la red, etc.</p></li>
+<li><p><strong>Gestor de paquetes</strong>: Deno cuenta con un gestor de paquetes llamado Deno que permite instalar y gestionar paquetes de código JavaScript de forma sencilla.</p></li>
+</ul>
+</section>
+<section id="creación-de-una-aplicación-web-con-deno" class="level2">
+<h2 class="anchored" data-anchor-id="creación-de-una-aplicación-web-con-deno">Creación de una aplicación web con Deno</h2>
+<p>Para crear una aplicación web con Deno, puedes seguir los siguientes pasos:</p>
+<ol type="1">
+<li>Crea un archivo <strong>app.ts</strong> con el siguiente código:</li>
+</ol>
+</section>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Application<span class="op">,</span> Router } <span class="im">from</span> <span class="st">'https://deno.land/x/oak/mod.ts'</span><span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="kw">new</span> <span class="fu">Application</span>()<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> router <span class="op">=</span> <span class="kw">new</span> <span class="fu">Router</span>()<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">'/'</span><span class="op">,</span> (ctx) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ctx<span class="op">.</span><span class="at">response</span><span class="op">.</span><span class="at">body</span> <span class="op">=</span> <span class="st">'Hola mundo!'</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(router<span class="op">.</span><span class="fu">routes</span>())<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(router<span class="op">.</span><span class="fu">allowedMethods</span>())<span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Servidor web iniciado en el puerto 3000'</span>)<span class="op">;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> app<span class="op">.</span><span class="fu">listen</span>({ port<span class="op">:</span> <span class="dv">3000</span> })<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="2" type="1">
+<li>Inicia el servidor web:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deno</span> run <span class="at">--allow-net</span> app.ts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="3" type="1">
+<li>Abre tu navegador y accede a la dirección <a href="http://localhost:3000/">http://localhost:3000/</a>.</li>
+</ol>
+<p>Con estos pasos has creado una aplicación web con Deno que muestra un mensaje de “Hola mundo!” en el navegador.</p>
+<section id="bun" class="level2">
+<h2 class="anchored" data-anchor-id="bun">Bun</h2>
+<p>Bun es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el servidor. Bun es una alternativa a Nodejs que cuenta con algunas características interesantes como:</p>
+<ul>
+<li><p><strong>Velocidad</strong>: Bun es más rápido que Nodejs en la ejecución de código JavaScript en el servidor.</p></li>
+<li><p><strong>Módulos</strong>: Bun utiliza módulos de CommonJS para organizar el código en diferentes archivos y reutilizarlo en diferentes partes de la aplicación.</p></li>
+<li><p><strong>APIs</strong>: Bun cuenta con un conjunto de APIs que permiten interactuar con el sistema operativo, el sistema de archivos, la red, etc.</p></li>
+<li><p><strong>Gestor de paquetes</strong>: Bun cuenta con un gestor de paquetes llamado Bun que permite instalar y gestionar paquetes de código JavaScript de forma sencilla.</p></li>
+</ul>
+</section>
+<section id="creación-de-una-aplicación-web-con-bun" class="level2">
+<h2 class="anchored" data-anchor-id="creación-de-una-aplicación-web-con-bun">Creación de una aplicación web con Bun</h2>
+<p>Para crear una aplicación web con Bun, puedes seguir los siguientes pasos:</p>
+<ol type="1">
+<li>Crea un archivo <strong>app.js</strong> con el siguiente código:</li>
+</ol>
+</section>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> http <span class="op">=</span> <span class="pp">require</span>(<span class="st">'http'</span>)<span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> server <span class="op">=</span> http<span class="op">.</span><span class="fu">createServer</span>((req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">writeHead</span>(<span class="dv">200</span><span class="op">,</span> { <span class="st">'Content-Type'</span><span class="op">:</span> <span class="st">'text/plain'</span> })<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">end</span>(<span class="st">'Hola mundo!</span><span class="sc">\n</span><span class="st">'</span>)<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>server<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Servidor web iniciado en el puerto 3000'</span>)<span class="op">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="2" type="1">
+<li>Inicia el servidor web:</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> app.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<ol start="3" type="1">
+<li>Abre tu navegador y accede a la dirección <a href="http://localhost:3000/">http://localhost:3000/</a>.</li>
+</ol>
+<p>Con estos pasos has creado una aplicación web con Bun que muestra un mensaje de “Hola mundo!” en el navegador.</p>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>En el desarrollo de aplicaciones web existen diferentes alternativas a Nodejs que permiten ejecutar código JavaScript en el servidor. En esta sección hemos analizado algunas de las alternativas a Nodejs como Deno y Bun y sus características.</p>
+<p>En la siguiente sección nos adentraremos en Reactjs y veremos cómo podemos utilizarlo en el desarrollo de aplicaciones web con Nodejs.</p>
+</section>
+</div>
+</section>
+<section id="npm-yarn-y-pnpm" class="level1">
+<h1>Npm, Yarn y Pnpm</h1>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/npm-vs-yarn-vs-pnpm-1.png" class="center img-fluid figure-img"></p>
+<figcaption>Npm, Yarn y Pnpm</figcaption>
+</figure>
+</div>
+</div>
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="justify">
+<p>En el desarrollo de aplicaciones web es muy común utilizar paquetes de código JavaScript de terceros para añadir funcionalidades a nuestras aplicaciones. Para gestionar estos paquetes de código JavaScript, existen diferentes gestores de paquetes como Npm, Yarn y Pnpm.</p>
+<p>En esta sección analizaremos las características de Npm, Yarn y Pnpm y cómo podemos utilizarlos en el desarrollo de aplicaciones web.</p>
+</div>
+</section>
+<section id="npm" class="level2">
+<h2 class="anchored" data-anchor-id="npm">Npm</h2>
+<p>:::{.justify} Npm (Node Package Manager) es el gestor de paquetes de Nodejs que permite instalar y gestionar paquetes de código JavaScript de terceros. Npm es muy popular en el desarrollo de aplicaciones web, ya que cuenta con un amplio repositorio de paquetes de código JavaScript.</p>
+<p>Algunas de las características de Npm son:</p>
+<ul>
+<li><p><strong>Instalación de paquetes</strong>: Npm permite instalar paquetes de código JavaScript de terceros de forma sencilla.</p></li>
+<li><p><strong>Gestión de dependencias</strong>: Npm permite gestionar las dependencias de un proyecto y asegurar que las versiones de los paquetes sean compatibles.</p></li>
+<li><p><strong>Scripts</strong>: Npm permite ejecutar scripts de forma sencilla a través del archivo <strong>package.json</strong>.</p></li>
+<li><p><strong>Repositorio de paquetes</strong>: Npm cuenta con un amplio repositorio de paquetes de código JavaScript que pueden ser utilizados en el desarrollo de aplicaciones web.</p></li>
+<li><p><strong>Versionado semántico</strong>: Npm utiliza el versionado semántico para gestionar las versiones de los paquetes de código JavaScript.</p></li>
+</ul>
+</section>
+<section id="instalación-de-paquetes-con-npm" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-paquetes-con-npm">Instalación de paquetes con Npm</h2>
+<p>Para instalar un paquete de código JavaScript con Npm, puedes utilizar el siguiente comando:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install nombre-del-paquete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En la sección anterior aprendimos a crear un proyecto con <strong>NPM</strong></p>
+</section>
+<section id="yarn" class="level2">
+<h2 class="anchored" data-anchor-id="yarn">Yarn</h2>
+<div class="justify">
+<p>Yarn es otro gestor de paquetes de código JavaScript que permite instalar y gestionar paquetes de código JavaScript de terceros. Yarn es muy popular en el desarrollo de aplicaciones web, ya que cuenta con un amplio repositorio de paquetes de código JavaScript.</p>
+<p>Algunas de las características de Yarn son:</p>
+<ul>
+<li><p><strong>Instalación de paquetes</strong>: Yarn permite instalar paquetes de código JavaScript de terceros de forma sencilla.</p></li>
+<li><p><strong>Gestión de dependencias</strong>: Yarn permite gestionar las dependencias de un proyecto y asegurar que las versiones de los paquetes sean compatibles.</p></li>
+<li><p><strong>Scripts</strong>: Yarn permite ejecutar scripts de forma sencilla a través del archivo <strong>package.json</strong>.</p></li>
+<li><p><strong>Repositorio de paquetes</strong>: Yarn cuenta con un amplio repositorio de paquetes de código JavaScript que pueden ser utilizados en el desarrollo de aplicaciones web.</p></li>
+<li><p><strong>Velocidad</strong>: Yarn es más rápido que Npm en la instalación de paquetes de código JavaScript.</p></li>
+</ul>
+<section id="instalación-de-paquetes-con-yarn" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-paquetes-con-yarn">Instalación de paquetes con Yarn</h2>
+<p>Para instalar un paquete de código JavaScript con Yarn, puedes utilizar el siguiente comando:</p>
+</section>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> add nombre-del-paquete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-un-proyecto-con-yarn" class="level2 justify">
+<h2 class="anchored" data-anchor-id="crear-un-proyecto-con-yarn">Crear un proyecto con Yarn</h2>
+<p>Para crear un proyecto con Yarn, puedes utilizar el siguiente comando:</p>
+</section>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<section id="pnpm" class="level2">
+<h2 class="anchored" data-anchor-id="pnpm">Pnpm</h2>
+<p>Pnpm es otro gestor de paquetes de código JavaScript que permite instalar y gestionar paquetes de código JavaScript de terceros. Pnpm es muy popular en el desarrollo de aplicaciones web, ya que cuenta con un amplio repositorio de paquetes de código JavaScript.</p>
+<p>Algunas de las características de Pnpm son:</p>
+<ul>
+<li><p><strong>Instalación de paquetes</strong>: Pnpm permite instalar paquetes de código JavaScript de terceros de forma sencilla.</p></li>
+<li><p><strong>Gestión de dependencias</strong>: Pnpm permite gestionar las dependencias de un proyecto y asegurar que las versiones de los paquetes sean compatibles.</p></li>
+<li><p><strong>Scripts</strong>: Pnpm permite ejecutar scripts de forma sencilla a través del archivo <strong>package.json</strong>.</p></li>
+<li><p><strong>Repositorio de paquetes</strong>: Pnpm cuenta con un amplio repositorio de paquetes de código JavaScript que pueden ser utilizados en el desarrollo de aplicaciones web.</p></li>
+<li><p><strong>Espacio en disco</strong>: Pnpm utiliza un espacio en disco más eficiente que Npm y Yarn.</p></li>
+</ul>
+</section>
+<section id="instalación-de-paquetes-con-pnpm" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-paquetes-con-pnpm">Instalación de paquetes con Pnpm</h2>
+<p>Para instalar un paquete de código JavaScript con Pnpm, puedes utilizar el siguiente comando:</p>
+</section>
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pnpm</span> add nombre-del-paquete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="crear-un-proyecto-con-pnpm" class="level2 justify">
+<h2 class="anchored" data-anchor-id="crear-un-proyecto-con-pnpm">Crear un proyecto con Pnpm</h2>
+<p>Para crear un proyecto con Pnpm, puedes utilizar el siguiente comando:</p>
+</section>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pnpm</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="conclusiones-3" class="level2 justify">
+<h2 class="anchored" data-anchor-id="conclusiones-3">Conclusiones</h2>
+<p>En el desarrollo de aplicaciones web es muy común utilizar paquetes de código JavaScript de terceros para añadir funcionalidades a nuestras aplicaciones. Para gestionar estos paquetes de código JavaScript, existen diferentes gestores de paquetes como Npm, Yarn y Pnpm.</p>
+<p>En esta sección hemos analizado las características de Npm, Yarn y Pnpm y cómo podemos utilizarlos en el desarrollo de aplicaciones web. En la siguiente sección nos adentraremos en Reactjs y veremos cómo podemos utilizarlo en el desarrollo de aplicaciones web con Nodejs.</p>
+</section>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/npm-vs-yarn-vs-pnpm-1.png" class="center img-fluid figure-img"></p>
+<figcaption>Npm, Yarn y Pnpm</figcaption>
+</figure>
+</div>
+</div>
+<section id="fnm" class="level2">
+<h2 class="anchored" data-anchor-id="fnm">FNM</h2>
+<div class="justify">
+<p>FNM es un gestor de versiones de Nodejs que permite cambiar de versión de Nodejs de forma sencilla. FNM es muy útil en el desarrollo de aplicaciones web, ya que permite utilizar diferentes versiones de Nodejs en un mismo sistema.</p>
+<p>Algunas de las características de FNM son:</p>
+<ul>
+<li><p><strong>Instalación de versiones</strong>: FNM permite instalar diferentes versiones de Nodejs de forma sencilla.</p></li>
+<li><p><strong>Cambio de versión</strong>: FNM permite cambiar de versión de Nodejs de forma sencilla.</p></li>
+<li><p><strong>Gestión de versiones</strong>: FNM permite gestionar las versiones de Nodejs de forma sencilla.</p></li>
+<li><p><strong>Integración con Npm, Yarn y Pnpm</strong>: FNM es compatible con los gestores de paquetes Npm, Yarn y Pnpm.</p></li>
+</ul>
+<section id="instalación-de-fnm" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-fnm">Instalación de FNM</h2>
+<p>Para instalar FNM en tu sistema operativo, puedes utilizar el siguiente comando:</p>
+</section>
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://fnm.vercel.app/install <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<p>Una vez instalado FNM, puedes utilizar los siguientes comandos para gestionar las versiones de Nodejs:</p>
+<ul>
+<li><p><strong>fnm install</strong>: Instala una versión de Nodejs.</p></li>
+<li><p><strong>fnm use</strong>: Cambia de versión de Nodejs.</p></li>
+<li><p><strong>fnm ls</strong>: Lista las versiones de Nodejs instaladas.</p></li>
+<li><p><strong>fnm default</strong>: Establece la versión de Nodejs por defecto.</p></li>
+</ul>
+<section id="ejemplo-de-uso-de-fnm" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-de-uso-de-fnm">Ejemplo de uso de FNM</h2>
+<p>Para instalar una versión de Nodejs con FNM, puedes utilizar el siguiente comando:</p>
+</section>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fnm</span> install 14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<p>Para cambiar de versión de Nodejs con FNM, puedes utilizar el siguiente comando:</p>
+</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fnm</span> use 14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<p>Para listar las versiones de Nodejs instaladas con FNM, puedes utilizar el siguiente comando:</p>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fnm</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="justify">
+<p>Para establecer la versión de Nodejs por defecto con FNM, puedes utilizar el siguiente comando:</p>
+</div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fnm</span> default 14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusiones-4" class="level2 justify">
+<h2 class="anchored" data-anchor-id="conclusiones-4">Conclusiones</h2>
+<p>FNM es un gestor de versiones de Nodejs que permite cambiar de versión de Nodejs de forma sencilla. FNM es muy útil en el desarrollo de aplicaciones web, ya que permite utilizar diferentes versiones de Nodejs en un mismo sistema.</p>
+<p>En esta sección hemos analizado las características de FNM y cómo podemos utilizarlo en el desarrollo de aplicaciones web. En la siguiente sección nos adentraremos en Reactjs y veremos cómo podemos utilizarlo en el desarrollo de aplicaciones web con Nodejs.</p>
+</section>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../unidades/unidad6/3_introduccion_javascript.html" class="pagination-link" aria-label="JavaScript">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">JavaScript</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../unidades/unidad6/5_introduccion_react.html" class="pagination-link" aria-label="Introducción a React">
+        <span class="nav-page-text"><span class="chapter-title">Introducción a React</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+<p>About</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../license.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

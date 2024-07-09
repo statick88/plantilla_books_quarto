@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Curso de Django y React 2024">
+
+<title>Django y React 2024 – Introducción a HTML</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../unidades/ejercicios/ejercicios_git_github-000.html" rel="next">
+<link href="../../unidades/unidad5/7_correccion_test.html" rel="prev">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_html.html">Unidad 6: Frontend</a></li><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_html.html"><span class="chapter-title">Introducción a HTML</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">
+      Django y React 2024
+      </a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../curso_django_and_react_2024.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../curso_django_and_react_2024.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenido</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Unidad 1: Introducción a Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/1_git_y_github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Git y GitHub 🕹️</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/2_github_classroom.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GitHub Classroom 📒</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad1/3_docker.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Docker 🐋</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Unidad 2: Python Básico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad2/1_introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hola Mundo en Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad2/2_variable_y_control_de_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sintaxis Básica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Unidad 3: Python Intermedio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad3/3_listas_tuplas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad3/4_conjuntos_diccionarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Diccionarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Unidad 4: Python Avanzado</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/5_programacion_oo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programación Orientada a Objetos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/6_modulos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Módulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad4/project001.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sistema de Gestión de Inventarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Unidad 5: Django</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/1_django_fundamentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Django</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/2_configuracion_inicial.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Configuración inicial de un proyecto.</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/3_estructura_archivos_directorios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Estructura de archivos y carpetas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/4_modelos_vistas_plantillas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/5_drf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Django Rest Framework</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/6_testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad5/7_correccion_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Corrección de tests en Django Rest Framework</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Unidad 6: Frontend</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/unidad6/1_introduccion_html.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción a HTML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Ejercicios</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_git_github-000.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios de Git y Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-001.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-002.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-003.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../unidades/ejercicios/ejercicios_python-004.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios Python - Nivel 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#estructura-básica-de-un-documento-html" id="toc-estructura-básica-de-un-documento-html" class="nav-link active" data-scroll-target="#estructura-básica-de-un-documento-html">Estructura básica de un documento HTML</a></li>
+  <li><a href="#etiquetas-html" id="toc-etiquetas-html" class="nav-link" data-scroll-target="#etiquetas-html">Etiquetas HTML</a></li>
+  <li><a href="#atributos-html" id="toc-atributos-html" class="nav-link" data-scroll-target="#atributos-html">Atributos HTML</a></li>
+  <li><a href="#ejemplo-de-un-documento-html" id="toc-ejemplo-de-un-documento-html" class="nav-link" data-scroll-target="#ejemplo-de-un-documento-html">Ejemplo de un documento HTML</a></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales">Recursos adicionales</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_html.html">Unidad 6: Frontend</a></li><li class="breadcrumb-item"><a href="../../unidades/unidad6/1_introduccion_html.html"><span class="chapter-title">Introducción a HTML</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Introducción a HTML</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>HTML es un lenguaje de marcado que se utiliza para el desarrollo de páginas de internet. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros. Es un estándar a cargo del W3C, organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación. Se considera el lenguaje más importante en el desarrollo de páginas web.</p>
+<p>HTML se escribe en forma de “etiquetas”, rodeadas por corchetes angulares (&lt;,&gt;). HTML también puede describir, hasta un cierto punto, la apariencia de un documento, y puede incluir un script (por ejemplo JavaScript), el cual puede afectar el comportamiento de navegadores web y otros procesadores de HTML.</p>
+<p>HTML se ha desarrollado en diferentes versiones, llamadas “versiones de HTML”. Sin embargo, su núcleo es siempre el mismo: definir la estructura de una página web. Las versiones de HTML son:</p>
+<ul>
+<li>HTML 2</li>
+<li>HTML 3</li>
+<li>HTML 4</li>
+<li>HTML 5</li>
+</ul>
+<p>HTML 5 es la última versión de HTML, y es la que se utiliza actualmente.</p>
+<section id="estructura-básica-de-un-documento-html" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-básica-de-un-documento-html">Estructura básica de un documento HTML</h2>
+<p>Un documento HTML tiene una estructura básica que debe seguir. Esta estructura es la siguiente:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Título de la página<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">&lt;!-- Contenido de la página --&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A continuación se describen las partes de un documento HTML:</p>
+<ul>
+<li><strong>&lt;!DOCTYPE html&gt;</strong>: Define la versión de HTML que se está utilizando. En este caso, HTML 5.</li>
+<li>**
+
+**: Es el elemento raíz de un documento HTML.</li>
+<li>**
+
+**: Contiene información sobre el documento, como su título.</li>
+<li>**
+<title>
+**: Define el título de la página, que se muestra en la pestaña del navegador.&lt;/li&gt;
+&lt;li&gt;**
+&lt;body&gt;
+**: Contiene el contenido de la página, como texto, imágenes, videos, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="etiquetas-html" class="level2"&gt;
+&lt;h2&gt;Etiquetas HTML&lt;/h2&gt;
+&lt;p&gt;Las etiquetas HTML son los bloques de construcción de un documento HTML. Las etiquetas se utilizan para definir la estructura y el contenido de la página. Cada etiqueta tiene un propósito específico y puede contener otros elementos HTML.&lt;/p&gt;
+&lt;p&gt;A continuación se muestran algunas etiquetas HTML comunes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;**
+&lt;h1&gt;
+a
+&lt;h6&gt;
+**: Define encabezados de diferentes tamaños.&lt;/li&gt;
+&lt;li&gt;**
+&lt;p&gt;
+**: Define un párrafo de texto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a&gt;&lt;/strong&gt;: Define un enlace a otra página.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;img&gt;&lt;/strong&gt;: Define una imagen.&lt;/li&gt;
+&lt;li&gt;**
+&lt;ul&gt;
+**: Define una lista desordenada.&lt;/li&gt;
+&lt;li&gt;**
+&lt;ol&gt;
+**: Define una lista ordenada.&lt;/li&gt;
+&lt;li&gt;**
+&lt;li&gt;
+**: Define un elemento de lista.&lt;/li&gt;
+&lt;li&gt;**
+&lt;table&gt;
+**: Define una tabla.&lt;/li&gt;
+&lt;li&gt;**
+&lt;tr&gt;
+**: Define una fila en una tabla.&lt;/li&gt;
+&lt;li&gt;**
+&lt;td&gt;
+**: Define una celda en una tabla.&lt;/li&gt;
+&lt;li&gt;**
+&lt;div&gt;
+**: Define una sección genérica de una página.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span&gt;&lt;/strong&gt;: Define una sección en línea de una página.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="atributos-html" class="level2"&gt;
+&lt;h2&gt;Atributos HTML&lt;/h2&gt;
+&lt;p&gt;Los atributos HTML proporcionan información adicional sobre los elementos HTML. Los atributos se especifican en la etiqueta de inicio y se utilizan para modificar el comportamiento o la apariencia del elemento.&lt;/p&gt;
+&lt;p&gt;A continuación se muestran algunos atributos HTML comunes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;href&lt;/strong&gt;: Especifica la URL de destino de un enlace.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;src&lt;/strong&gt;: Especifica la URL de origen de una imagen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;alt&lt;/strong&gt;: Especifica un texto alternativo para una imagen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;width&lt;/strong&gt;: Especifica el ancho de un elemento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;height&lt;/strong&gt;: Especifica la altura de un elemento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;style&lt;/strong&gt;: Especifica estilos CSS para un elemento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="ejemplo-de-un-documento-html" class="level2"&gt;
+&lt;h2&gt;Ejemplo de un documento HTML&lt;/h2&gt;
+&lt;p&gt;A continuación se muestra un ejemplo de un documento HTML básico que contiene un encabezado, un párrafo de texto y una imagen:&lt;/p&gt;
+&lt;div class="sourceCode" id="cb2"&gt;&lt;pre class="sourceCode html"&gt;&lt;code class="sourceCode html"&gt;&lt;span id="cb2-1"&gt;&lt;a href="#cb2-1" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;&lt;span class="dt"&gt;&lt;!DOCTYPE&lt;/span&gt; html&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-2"&gt;&lt;a href="#cb2-2" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;&lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;html&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-3"&gt;&lt;a href="#cb2-3" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;    &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;head&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-4"&gt;&lt;a href="#cb2-4" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;        &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;title&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;Ejemplo de HTML&lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;title&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-5"&gt;&lt;a href="#cb2-5" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;    &lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;head&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-6"&gt;&lt;a href="#cb2-6" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;    &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;body&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-7"&gt;&lt;a href="#cb2-7" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;        &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;h1&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;Este es un encabezado&lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;h1&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-8"&gt;&lt;a href="#cb2-8" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;        &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;p&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;Este es un párrafo de texto.&lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;p&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-9"&gt;&lt;a href="#cb2-9" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;        &lt;span class="dt"&gt;&lt;&lt;/span&gt;&lt;span class="kw"&gt;img&lt;/span&gt;&lt;span class="ot"&gt; src&lt;/span&gt;&lt;span class="op"&gt;=&lt;/span&gt;&lt;span class="st"&gt;"imagen.jpg"&lt;/span&gt;&lt;span class="ot"&gt; alt&lt;/span&gt;&lt;span class="op"&gt;=&lt;/span&gt;&lt;span class="st"&gt;"Una imagen"&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-10"&gt;&lt;a href="#cb2-10" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;    &lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;body&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id="cb2-11"&gt;&lt;a href="#cb2-11" aria-hidden="true" tabindex="-1"&gt;&lt;/a&gt;&lt;span class="dt"&gt;&lt;/&lt;/span&gt;&lt;span class="kw"&gt;html&lt;/span&gt;&lt;span class="dt"&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;En este ejemplo, se define un encabezado de nivel 1 con el texto “Este es un encabezado”, un párrafo de texto con el texto “Este es un párrafo de texto” y una imagen con la URL “imagen.jpg” y el texto alternativo “Una imagen”.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="recursos-adicionales" class="level2"&gt;
+&lt;h2&gt;Recursos adicionales&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.w3schools.com/html/"&gt;W3Schools HTML Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTML"&gt;Mozilla Developer Network HTML Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://htmlreference.io/"&gt;HTML Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://htmlcheatsheet.com/"&gt;HTML Cheat Sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="ejercicios" class="level2"&gt;
+&lt;h2&gt;Ejercicios&lt;/h2&gt;
+&lt;ol type="1"&gt;
+&lt;li&gt;&lt;p&gt;Crea un documento HTML que contenga un encabezado de nivel 1 con el texto “Hola, mundo!” y un párrafo de texto con el texto “Este es un ejemplo de un documento HTML básico”.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crea un documento HTML que contenga una lista desordenada con tres elementos de lista. Los elementos de lista deben contener los siguientes textos: “Elemento 1”, “Elemento 2” y “Elemento 3”.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crea un documento HTML que contenga una tabla con tres filas y tres columnas. En cada celda de la tabla, coloca un número del 1 al 9.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crea un documento HTML que contenga un enlace a la página de Google. El enlace debe tener el texto “Ir a Google” y debe abrirse en una nueva pestaña del navegador.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crea un documento HTML que contenga una imagen de tu elección. La imagen debe tener un ancho de 200 píxeles y un alto de 200 píxeles.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id="quarto-navigation-envelope" class="hidden"&gt;
+&lt;p&gt;&lt;span class="hidden" data-render-id="quarto-int-sidebar-title"&gt;Django y React 2024&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-navbar-title"&gt;Django y React 2024&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-next"&gt;&lt;span class="chapter-number"&gt;20&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios de Git y Github&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-prev"&gt;&lt;span class="chapter-number"&gt;18&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Corrección de tests en Django Rest Framework&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/index.html&lt;span-class='chapter-number'&gt;1&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Bienvenido&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;1&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Bienvenido&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1"&gt;Unidad 1: Introducción a Python&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad1/1_git_y_github.html&lt;span-class='chapter-number'&gt;2&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Git-y-GitHub-🕹️&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;2&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Git y GitHub 🕹️&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad1/2_github_classroom.html&lt;span-class='chapter-number'&gt;3&lt;/span&gt;--&lt;span-class='chapter-title'&gt;GitHub-Classroom-📒&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;3&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;GitHub Classroom 📒&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad1/3_docker.html&lt;span-class='chapter-number'&gt;4&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Docker-🐋&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;4&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Docker 🐋&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2"&gt;Unidad 2: Python Básico&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad2/1_introduccion.html&lt;span-class='chapter-number'&gt;5&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Hola-Mundo-en-Python&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;5&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Hola Mundo en Python&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad2/2_variable_y_control_de_flujo.html&lt;span-class='chapter-number'&gt;6&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Sintaxis-Básica&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;6&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Sintaxis Básica&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3"&gt;Unidad 3: Python Intermedio&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad3/3_listas_tuplas.html&lt;span-class='chapter-number'&gt;7&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Listas&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;7&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Listas&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad3/4_conjuntos_diccionarios.html&lt;span-class='chapter-number'&gt;8&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Diccionarios&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;8&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Diccionarios&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4"&gt;Unidad 4: Python Avanzado&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad4/5_programacion_oo.html&lt;span-class='chapter-number'&gt;9&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Programación-Orientada-a-Objetos&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;9&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Programación Orientada a Objetos&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad4/6_modulos.html&lt;span-class='chapter-number'&gt;10&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Módulos&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;10&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Módulos&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad4/project001.html&lt;span-class='chapter-number'&gt;11&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Sistema-de-Gestión-de-Inventarios&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;11&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Sistema de Gestión de Inventarios&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5"&gt;Unidad 5: Django&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/1_django_fundamentos.html&lt;span-class='chapter-number'&gt;12&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Introducción-a-Django&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;12&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Introducción a Django&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/2_configuracion_inicial.html&lt;span-class='chapter-number'&gt;13&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Configuración-inicial-de-un-proyecto.&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;13&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Configuración inicial de un proyecto.&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/3_estructura_archivos_directorios.html&lt;span-class='chapter-number'&gt;14&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Estructura-de-archivos-y-carpetas&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;14&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Estructura de archivos y carpetas&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/4_modelos_vistas_plantillas.html&lt;span-class='chapter-number'&gt;15&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Modelos&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;15&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Modelos&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/5_drf.html&lt;span-class='chapter-number'&gt;16&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Django-Rest-Framework&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;16&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Django Rest Framework&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/6_testing.html&lt;span-class='chapter-number'&gt;17&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Testing&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;17&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Testing&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad5/7_correccion_test.html&lt;span-class='chapter-number'&gt;18&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Corrección-de-tests-en-Django-Rest-Framework&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;18&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Corrección de tests en Django Rest Framework&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6"&gt;Unidad 6: Frontend&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/unidad6/1_introduccion_html.html&lt;span-class='chapter-number'&gt;19&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Introducción-a-HTML&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;19&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Introducción a HTML&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-7"&gt;Ejercicios&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/ejercicios/ejercicios_git_github-000.html&lt;span-class='chapter-number'&gt;20&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Ejercicios-de-Git-y-Github&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;20&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios de Git y Github&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/ejercicios/ejercicios_python-001.html&lt;span-class='chapter-number'&gt;21&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Ejercicios-Python---Nivel-1&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;21&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios Python - Nivel 1&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/ejercicios/ejercicios_python-002.html&lt;span-class='chapter-number'&gt;22&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Ejercicios-Python---Nivel-2&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;22&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios Python - Nivel 2&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/ejercicios/ejercicios_python-003.html&lt;span-class='chapter-number'&gt;23&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Ejercicios-Python---Nivel-3&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;23&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios Python - Nivel 3&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-int-sidebar:/unidades/ejercicios/ejercicios_python-004.html&lt;span-class='chapter-number'&gt;24&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Ejercicios-Python---Nivel-4&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;24&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Ejercicios Python - Nivel 4&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-breadcrumbs-Unidad-6:-Frontend"&gt;Unidad 6: Frontend&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-breadcrumbs-&lt;span-class='chapter-number'&gt;19&lt;/span&gt;--&lt;span-class='chapter-title'&gt;Introducción-a-HTML&lt;/span&gt;"&gt;&lt;span class="chapter-number"&gt;19&lt;/span&gt;&nbsp; &lt;span class="chapter-title"&gt;Introducción a HTML&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div class="hidden" data-render-id="footer-center-/about.html"&gt;
+&lt;p&gt;About&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="hidden" data-render-id="footer-center-/license.html"&gt;
+&lt;p&gt;License&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="quarto-meta-markdown" class="hidden"&gt;
+&lt;p&gt;&lt;span class="hidden" data-render-id="quarto-metatitle"&gt;Django y React 2024 - &lt;span class="chapter-title"&gt;Introducción a HTML&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-twittercardtitle"&gt;Django y React 2024 - &lt;span class="chapter-title"&gt;Introducción a HTML&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-ogcardtitle"&gt;Django y React 2024 - &lt;span class="chapter-title"&gt;Introducción a HTML&lt;/span&gt;&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-metasitename"&gt;Django y React 2024&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-twittercarddesc"&gt;Curso de Django y React 2024&lt;/span&gt; &lt;span class="hidden" data-render-id="quarto-ogcardddesc"&gt;Curso de Django y React 2024&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;/main&gt; &lt;!-- /main --&gt;
+&lt;script id = "quarto-html-after-body" type="application/javascript"&gt;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) =&gt; {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () =&gt; {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) =&gt; {
+    for (let i=0; i &lt; stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) =&gt; {
+    for (let i=0; i &lt; stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) =&gt; {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i &lt; els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) =&gt; {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () =&gt; {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) =&gt; {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) =&gt; {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i &lt; toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') &gt; 0 &amp;&amp; navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() =&gt; {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () =&gt; { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () =&gt; {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) =&gt; {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () =&gt; {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () =&gt; {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) =&gt; {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) =&gt; {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i&lt;links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i&lt;noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) =&gt; {
+    // Strip column container classes
+    const stripColumnClz = (el) =&gt; {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children &amp;&amp; note.children.length &gt; 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i &lt; note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" &amp;&amp; child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i&lt;xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res =&gt; res.text())
+          .then(html =&gt; {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() =&gt; {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res =&gt; res.text())
+        .then(html =&gt; {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length &gt; 0 &amp;&amp; note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() =&gt; {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) =&gt; {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) =&gt; {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) =&gt; {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length &gt; 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length &gt; 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null &amp;&amp; height !== null &amp;&amp; parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () =&gt; {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) =&gt; {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() =&gt; {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) =&gt; {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() =&gt; {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) =&gt; {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) =&gt; {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i&lt;bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+&lt;/script&gt;
+&lt;nav class="page-navigation"&gt;
+  &lt;div class="nav-page nav-page-previous"&gt;
+      &lt;a  href="/unidades/unidad5/7_correccion_test.html" class="pagination-link" aria-label="Corrección de tests en Django Rest Framework"&gt;
+        &lt;i class="bi bi-arrow-left-short"&gt;&lt;/i&gt; &lt;span class="nav-page-text"&gt;&lt;span class='chapter-number'&gt;18&lt;/span&gt;&nbsp; &lt;span class='chapter-title'&gt;Corrección de tests en Django Rest Framework&lt;/span&gt;&lt;/span&gt;
+      &lt;/a&gt;          
+  &lt;/div&gt;
+  &lt;div class="nav-page nav-page-next"&gt;
+      &lt;a  href="/unidades/ejercicios/ejercicios_git_github-000.html" class="pagination-link" aria-label="Ejercicios de Git y Github"&gt;
+        &lt;span class="nav-page-text"&gt;&lt;span class='chapter-number'&gt;20&lt;/span&gt;&nbsp; &lt;span class='chapter-title'&gt;Ejercicios de Git y Github&lt;/span&gt;&lt;/span&gt; &lt;i class="bi bi-arrow-right-short"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+&lt;/div&gt; &lt;!-- /content --&gt;
+&lt;footer class="footer"&gt;
+  &lt;div class="nav-footer"&gt;
+    &lt;div class="nav-footer-left"&gt;
+      &nbsp;
+    &lt;/div&gt;   
+    &lt;div class="nav-footer-center"&gt;
+      &lt;ul class="footer-items list-unstyled"&gt;
+    &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link" href="/about.html"&gt;
+ About
+    &lt;/a&gt;
+  &lt;/li&gt;  
+    &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link" href="/license.html"&gt;
+ License
+    &lt;/a&gt;
+  &lt;/li&gt;  
+&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="nav-footer-right"&gt;
+      &nbsp;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</title></li></ul></section></main></div></body></html>
