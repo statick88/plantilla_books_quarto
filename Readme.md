@@ -1,4 +1,4 @@
-# Curso de Django y React.
+# Título del Curso.
 
 `Elaborado por:` [Nombre del Autor][def]
 
