@@ -1,0 +1,20 @@
+# Bienvenido
+
+::: {.text-justify}
+::: justify
+
+::: {.text-center}
+Bienvenida al libro
+:::
+Descripción del Curso general
+## ¿De qué trata este curso?
+
+En esta sección describimos de que va a tratar el curso
+## ¿Para quién es este curso?
+
+En esta sección mencionamos el público objetivo
+## ¿Cómo contribuir?
+
+En esta sección describimos como se puede contribuir al libro
+:::
+:::
