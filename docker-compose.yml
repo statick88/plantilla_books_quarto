@@ -1,0 +1,10 @@
+services:
+  quarto-book:
+    build: .
+    image: statick88/quarto-book:latest
+    container_name: quarto-book
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/workspace
+    command: ["quarto", "render"]
